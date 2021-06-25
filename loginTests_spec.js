@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import Login from '../my own tests/page objects/login'
+import Login from './page objects/login'
 
 describe('create account scenarios', () => {
     const login = new Login()
