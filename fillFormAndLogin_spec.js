@@ -6,7 +6,6 @@ describe('create account scenarios', () => {
         login.mainPage()
       })
     // it('create account', () => {
-    //     login.mainPage()
     //     login.loginButton().click()
     //     cy.url().should('include', 'my-account')
     //     // ^ asserts that link includes 'my-account'
