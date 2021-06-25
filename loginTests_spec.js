@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 import Login from './page objects/login'
 
 describe('create account scenarios', () => {
