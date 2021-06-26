@@ -57,6 +57,13 @@ class login{
     registerAccountButtonClick = () =>{
         cy.get('#submitAccount').click()
     }
+    logIntoAccount = () =>{
+        clickLoginButton()
+        cy.get('#email').type('nixed74315@bbsaili.com')
+        cy.get('#passwd').type('Test123!')
+        cy.get('#SubmitLogin').click()
+        cy.get('#header > div.nav > div > div > nav > div:nth-child(1) > a > span').should('contain', 'TestTest TestowyTestowy')
+    }
 
 }
 export default login
