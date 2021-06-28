@@ -58,7 +58,7 @@ class login{
         cy.get('#submitAccount').click()
     }
     logIntoAccount = () =>{
-        clickLoginButton()
+        cy.get('.login').click()
         cy.get('#email').type('nixed74315@bbsaili.com')
         cy.get('#passwd').type('Test123!')
         cy.get('#SubmitLogin').click()
