@@ -12,21 +12,24 @@ describe('contact form tests', ()=>{
         cy.get(contactDropdown).select('Customer service')
         cy.get(contactEmailForm).type('nixe74315@bbsaili.com')
         cy.get(messageField).type('test message')
-        cy.get(submitButton).click().then(()=>{
-            cy.get('.alert-success').should('be.visible')
+        cy.get(submitButton).click()
+        cy.get('.alert-success').should('be.visible')
            //^ asserts that succes message is visible
-        })
+        
     })
     it('user is able to send a form with invalid data - blank email form, asserts verification', ()=>{
         cy.get(contactDropdown).select('Customer service')
         cy.get(contactEmailForm).type('     ')
         cy.get(messageField).type('test message')
-        cy.get(submitButton).click().then(()=>{
-            cy.get('.alert-danger').should('be.visible')
-            cy.get(".alert-danger > ol > li").should('contain', 'Invalid email address.')
+        cy.get(submitButton).click()
+        cy.get('.alert-danger')
+            .should('be.visible')
+            .find('li')
+            .should('contain', 'Invalid email address.')
+        
             
-            //^ verifies that alert box is visible, and content informs us about invalid email
-        })
+            //^ verifies that alert box is visible, and content of child 'li' informs us about invalid email
+        
     })
     it('verifies that a proper hint message under the dropdown menu "Subject Heading" is visible, when each item is selected', ()=>{
         cy.get(contactDropdown).select('Customer service')
