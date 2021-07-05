@@ -1,40 +1,43 @@
-import Login from './page objects/login'
 
 describe('contact form tests', ()=>{
-    const login = new Login()
+    let contactDropdown = '#id_contact'
+    let contactEmailForm = "input[id='email']"
+    let messageField = "textarea[id='message']"
+    let submitButton = "button[id='submitMessage']"
     beforeEach(()=>{
-        login.mainPage()
+        cy.visit('http://automationpractice.com/')
         cy.get('#contact-link').click()
     })
     it('user is able to send a form with valid data - valid email, asserts verification', ()=>{
-        cy.get('#id_contact').select('Customer service')
-        cy.get("input[id='email']").type('nixe74315@bbsaili.com')
-        cy.get("textarea[id='message']").type('test message')
-        cy.get("button[id='submitMessage']").click().then(()=>{
+        cy.get(contactDropdown).select('Customer service')
+        cy.get(contactEmailForm).type('nixe74315@bbsaili.com')
+        cy.get(messageField).type('test message')
+        cy.get(submitButton).click().then(()=>{
             cy.get('.alert-success').should('be.visible')
            //^ asserts that succes message is visible
         })
     })
     it('user is able to send a form with invalid data - blank email form, asserts verification', ()=>{
-        cy.get('#id_contact').select('Customer service')
-        cy.get("input[id='email']").type('     ')
-        cy.get("textarea[id='message']").type('test message')
-        cy.get("button[id='submitMessage']").click().then(()=>{
-            const alertMsg = cy.get('.alert-danger')
-            const alertContent = cy.get(".alert-danger > ol > li")
-            alertMsg.should('be.visible')
-            alertContent.should('contain', 'Invalid email address.')
+        cy.get(contactDropdown).select('Customer service')
+        cy.get(contactEmailForm).type('     ')
+        cy.get(messageField).type('test message')
+        cy.get(submitButton).click().then(()=>{
+            cy.get('.alert-danger').should('be.visible')
+            cy.get(".alert-danger > ol > li").should('contain', 'Invalid email address.')
+            
             //^ verifies that alert box is visible, and content informs us about invalid email
         })
     })
     it('verifies that a proper hint message under the dropdown menu "Subject Heading" is visible, when each item is selected', ()=>{
-        cy.get('#id_contact').select('Customer service')
-        cy.get('#desc_contact2').then(($customerServiceMsg)=>{
-            expect($customerServiceMsg).to.have.text('\n                            For any question about a product, an order\n                        ')
+        cy.get(contactDropdown).select('Customer service')
+        cy.get('#desc_contact2').invoke('text').then(($customerServiceMsg)=>{
+            let customerAssertMessage = $customerServiceMsg.trim()
+            expect($customerServiceMsg).to.contain(customerAssertMessage)
         })
-        cy.get('#id_contact').select('Webmaster')
-        cy.get('#desc_contact1').then(($webmasterMsg)=>{
-            expect($webmasterMsg).to.have.text('\n                            If a technical problem occurs on this website\n                        ')
+        cy.get(contactDropdown).select('Webmaster')
+        cy.get('#desc_contact1').invoke('text').then(($webmasterMsg)=>{
+            let webmasterAssertMessage = $webmasterMsg.trim()
+            expect($webmasterMsg).to.contain(webmasterAssertMessage)
         })
     })
     it('verifies that attachement field is visible', ()=>{
