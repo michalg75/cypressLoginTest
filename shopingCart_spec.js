@@ -71,6 +71,7 @@ describe('basic cart functions', ()=>{
             .then(()=>{
                 fixedFirstPrice = parseFloat(firstPrice.substring(1))
                 fixedSecondPrice = parseFloat(secondPrice.substring(1))
+                //deletes $ sign from price values and convert string to number
                 console.log(fixedFirstPrice)
                 console.log(fixedSecondPrice)
                 cy.get("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > div > div > div > dl > dt > div > span").then(($finaprice)=>{
