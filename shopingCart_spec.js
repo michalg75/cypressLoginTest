@@ -2,8 +2,11 @@ import Login from './page objects/login'
 
 describe('basic cart functions', ()=>{
     const login = new Login()
+    let continueShoppingButton = 'Continue shopping'
+    let addToCartButton = 'Add to cart'
+    let shoppingCartMainPageView = "a[title='View my shopping cart']"
     beforeEach(()=>{
-        login.mainPage()
+        cy.visit('http://automationpractice.com/')
         login.logIntoAccount()
     })
     
@@ -11,9 +14,9 @@ describe('basic cart functions', ()=>{
         cy.get('#block_top_menu > ul > li:nth-child(3) > a').click()
         cy.get('#center_column > ul > li > div > div.left-block > div > a.product_img_link > img')
             .trigger('mouseover')
-        cy.get('span').contains('Add to cart').click()
+        cy.contains(addToCartButton).click()
         cy.wait(5000)
-        cy.contains('Continue shopping').click()
+        cy.contains(continueShoppingButton).click()
         cy.get('span .ajax_cart_quantity').should('contain', '1')
         // ^ above code add t-shirt to shopping cart, and ensures that it is added by checking quantity displayed in our cart - should be '1'
    
@@ -23,13 +26,13 @@ describe('basic cart functions', ()=>{
             .click({force:true})
         cy.get('#center_column > ul > li > div > div.left-block > div > a.product_img_link > img')
             .trigger('mouseover')
-        cy.contains('Add to cart').click()
+        cy.contains(addToCartButton).click()
         cy.wait(5000)
-        cy.contains('Continue shopping').click()
+        cy.contains(continueShoppingButton).click()
         cy.get('span .ajax_cart_quantity').should('contain', '2')
         //here we add another item to our cart, and ensure that it is added by checking quantity displayed in our cart - should be '2'
 
-        cy.get("a[title='View my shopping cart']")
+        cy.get(shoppingCartMainPageView)
             .trigger('mouseover').then(()=>{
                 cy.get('.ajax_cart_block_remove_link')
                 .first()
@@ -50,8 +53,8 @@ describe('basic cart functions', ()=>{
         cy.get('#our_price_display').then(($firstprice)=>{
             firstPrice = $firstprice.text()
             console.log(fixedFirstPrice)
-            cy.contains('Add to cart').click()
-            cy.contains('Continue shopping').click()
+            cy.contains(addToCartButton).click()
+            cy.contains(continueShoppingButton).click()
 
             })
             //above code adds one t-shirt to bucket
@@ -61,12 +64,12 @@ describe('basic cart functions', ()=>{
             cy.get('#our_price_display').then(($secondprice)=>{
                 secondPrice = $secondprice.text()
                 console.log(fixedSecondPrice)
-                cy.contains('Add to cart').click()
-                cy.contains('Continue shopping').click()
+                cy.contains(addToCartButton).click()
+                cy.contains(continueShoppingButton).click()
     
                 })
                //above code adds another t-shirt to bucket
-            cy.get("a[title='View my shopping cart']")
+            cy.get(shoppingCartMainPageView)
             .trigger('mouseover')
             .then(()=>{
                 fixedFirstPrice = parseFloat(firstPrice.substring(1))

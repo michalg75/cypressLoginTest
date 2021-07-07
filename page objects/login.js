@@ -64,6 +64,6 @@ class login{
         cy.get('#SubmitLogin').click()
         cy.get('#header > div.nav > div > div > nav > div:nth-child(1) > a > span').should('contain', 'TestTest TestowyTestowy')
     }
-
+   
 }
 export default login
