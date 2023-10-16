@@ -1,0 +1,21 @@
+{
+    "incorrectPassword": {
+        "password": "admin1"
+    },
+
+    "incorrectMail": {
+        "mail": "admin1@yourstore.com"
+    },
+
+    "correctCredentials": {
+        "email": "admin@yourstore.com",
+        "password": "admin"
+    },
+
+    "alertBoxMessages": {
+        "baseAlert": "Login was unsuccessful. Please correct the errors and try again.",
+        "wrongMailAlert": "No customer account found",
+        "wrongPasswordAlert": "The credentials provided are incorrect"
+    }
+    
+}
