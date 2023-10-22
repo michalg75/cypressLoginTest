@@ -3,7 +3,7 @@ import { incorrectMail, incorrectPassword, correctCredentials, alertBoxMessages 
     from "../fixtures/adminPage/loginPage.json"
 import loginPageSelectors from "../support/selectors/loginPageSelectors"
 
-describe('login success test', ()=>{
+describe('login form tests', ()=>{
 
     beforeEach(() => {
         loginPage.visitLoginPage()
