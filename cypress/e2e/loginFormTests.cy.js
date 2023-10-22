@@ -1,4 +1,4 @@
-import loginPage from "../support/page objects/adminStorePage/loginPage"
+import loginPage from "../support/pageObjects/adminStorePage/loginPage"
 import { incorrectMail, incorrectPassword, correctCredentials, alertBoxMessages }
     from "../fixtures/adminPage/loginPage.json"
 import loginPageSelectors from "../support/selectors/loginPageSelectors"
