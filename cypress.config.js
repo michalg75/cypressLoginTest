@@ -6,6 +6,7 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://admin-demo.nopcommerce.com',
     panelMainPage: '/admin/',
+    video: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
