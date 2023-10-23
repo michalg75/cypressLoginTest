@@ -15,13 +15,13 @@ elif [ $num = 2 ]; then
   3 - Firefox"
   read browsernum
   if [ $browsernum = 1 ]; then
-   echo `npx cypress run --headless --browser electron`
+   echo `npx cypress run --browser electron`
   elif [ $browsernum = 2 ]; then
-   echo `npx cypress run --headless --browser chrome`
+   echo `npx cypress run --browser chrome`
   elif [ $browsernum = 3 ]; then
-   echo `npx cypress run --headless --browser firefox`
+   echo `npx cypress run --browser firefox`
   fi
 else [ $num = 3 ];
   echo "Running: default headless"
-  echo `npx cypress run`
+  echo `npm run cypress:run`
 fi
