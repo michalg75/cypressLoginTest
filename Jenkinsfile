@@ -16,18 +16,14 @@ pipeline {
           }
       }
       stage('e2e Tests') {
-        Parallel{
-            stage('Test 1') {
-                 steps {
+            steps {
                sh 'npm run cypress:ci'
                  }
-              }
-      }
+             }
       stage('Deploy') {
           steps {
               echo 'Deploying....'
           }
       }
   }
-}
 }
