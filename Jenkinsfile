@@ -17,13 +17,8 @@ pipeline {
       }
       stage('e2e Tests') {
             steps {
-               sh 'npm run cypress:ci'
+               sh 'npx cypress run --browser chrome'
                  }
              }
-      stage('Deploy') {
-          steps {
-              echo 'Deploying....'
-          }
       }
   }
-}
