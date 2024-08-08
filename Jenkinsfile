@@ -12,12 +12,12 @@ pipeline {
   stages {
       stage('Dependencies') {
           steps {
-            'npm i'
+            bat 'npm i'
           }
       }
       stage('e2e Tests') {
             steps {
-            'npx cypress run --browser chrome'
+            bat 'npx cypress run --browser chrome'
                 }
             }
       }
