@@ -5,9 +5,6 @@ pipeline {
   tools {nodejs "Node"}
 
 
-  environment {
-      CHROME_BIN = '/bin/google-chrome'
-   
   }
   stages {
       stage('Dependencies') {
@@ -25,5 +22,4 @@ pipeline {
               echo 'Deploying....'
           }
       }
-}
 }
